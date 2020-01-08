@@ -1,0 +1,65 @@
+body {
+    background-color:#ccc;
+    height:100%;
+    margin-bottom: 40px;
+}
+
+.dash {
+    background-color:rgb(0, 132, 255);
+    color:#fff;
+    text-align:center;
+    max-height:70px;
+    width:flex;
+    padding:0px 0px 0px 0px;
+    margin:0 auto;
+}
+.container {
+    margin-top:0px;
+    margin-right:0px;
+    margin-bottom:0px;
+    margin-left:0px;
+    width:100%;
+}
+
+.col-search {
+    
+    padding-right:0px;
+    padding-bottom:0px;
+    
+}
+
+.card {
+    margin-top:10px;
+    padding: 5px 5px 5px 5px;
+    
+}
+
+@media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1279px;
+    }
+}
+@media (min-width: 576px) {
+    .jumbotron {
+      padding-bottom: 0;
+    }
+}
+
+.five-day {
+    border: 2px solid black;
+    height:14rem;
+    background-color:rgb(0, 132, 255);
+    color:#fff;
+    
+    
+    
+}
+.col {
+    
+    margin-right:10px;
+    margin-top:10px;
+}
+.main-forecast {
+    height:14rem;
+    border: 2px solid black;
+}

@@ -7,15 +7,71 @@
     <title>Weather App</title>
     <!--Bootstrap CSS--------------------------------->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!--My CSS-->
     <link rel="stylesheet" href="style.css">
     
-
-
 </head>
 <body>
+    <div class="jumbotron jumbotron-fluid dash">
+          <h1>Weather Dashboard</h1>
+    </div>
     
-    
+    <div class="container">
+        <div class="row">
+            <!--Search Content Here-->
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;">
+                    <label for="citySearch"><h3>Search for a city:</h3></label>
+                    <div class="row">
+                        <div class="col-md-9 col-search">
+                            <input id="city-search" type="text" class="form-control" class="search" >        
+                        </div>
+                        <div class="col-md-2 col-search">
+                            <button class="search btn btn-primary btn-search"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                    
+                    <ul class="list-group list-group-flush">
+                        
+                        <!--
+                        <li class="list-group-item"><button type="button" class="btn btn-dark">Dapibus ac facilisis in</button></li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                        -->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col main-forecast">
+                        <!--This is for the main forecast content-->
+                        <h3>Atlanta Forecast (1/8/2020)</h3>
+                        <p>Temperature: </p>
+                        <p>Humidity: </p>
+                        <p>Wind Speed: </p>
+                        <p>UV Index: </p>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="row">
+                    <div class="col"><h3>5-Day Forecast:</h3></div>
+                </div>
+                <div class="row">
+                    <div class="col five-day">Sunday</div>
+                    <div class="col five-day">Monday</div>
+                    <div class="col five-day">Tuesday</div>
+                    <div class="col five-day">Wednesday</div>
+                    <div class="col five-day">Thursday</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
     <!--Bootstrap jQuery--------------------------------->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
