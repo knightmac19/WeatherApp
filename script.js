@@ -1,45 +1,36 @@
 $(document).ready(function() {
-        
-    var city = "";
-    var citiesArray = [];
-    getData();
-
-    //Not working
-    $(".btn-dark").on("click", function() {
-        var searchTerm = $(this).val();
+    $(document).on("click" ,".btn-dark", function() {
+        var searchTerm = $(this).text();
         console.log(searchTerm);
         getWeather(searchTerm);
     });
 
 
+    var city = "";
+    var citiesArray = JSON.parse(localStorage.getItem("citiesArray")) || [];
+    getData();
+    
     $("#city-search").keyup(function(event) {
         var code = event.which;
         if (code == 13) {
             event.preventDefault();
-            
             setData();
             getData();
             getWeather(city);
-            
         }
     });
 
     $(".btn-search").on("click", function() {
-        
         setData();
         getData();
         getWeather(city);
-        
     });
 
     function setData() {
         city = $("#city-search").val().trim();
         citiesArray.push(city);
-        for (var i = 0; i < citiesArray.length; i++) {
-            localStorage.setItem(citiesArray[i], citiesArray[i]);
-        }
-        console.log(citiesArray);
-        console.log("city: " + city);
+        localStorage.setItem("citiesArray", JSON.stringify(citiesArray));
+
     }
 
     function getData() {
@@ -58,8 +49,14 @@ $(document).ready(function() {
             darkBtn.attr("type", "button");
             darkBtn.css({"width": "100%", "text-align": "center", "font-size": "1.1rem"});
 
+            // darkBtn.on("click", function() {
+            //     var searchTerm = $(this).text();
+            //     console.log(searchTerm);
+            //     getWeather(searchTerm);
+            // });
+
             //set button text()
-            darkBtn.text(localStorage.getItem(citiesArray[i]));
+            darkBtn.text(citiesArray[i]);
 
             //set button as html of li
             li.html(darkBtn);
@@ -80,10 +77,7 @@ $(document).ready(function() {
           console.log(response);
           
           var code = response.weather[0].icon;
-          console.log(code);
-          
           var imgSrc = "https://openweathermap.org/img/wn/" + code + ".png";
-          console.log(imgSrc);
           var iconImg = $("<img>").attr("src", imgSrc);
           iconImg.attr("alt", response.weather[0].main);
           
@@ -106,8 +100,7 @@ $(document).ready(function() {
                     console.log(response);
                     var displayNum = parseFloat(response.value).toFixed(2);
                     var indexNum = parseInt(response.value);
-                    console.log("uv index: " + response.value + 100);
-                    console.log(indexNum + 100);
+                    
                     
                     if (indexNum >= 0 && indexNum < 3) {
                         $("#UV-index").text("UV Index: " + displayNum);
@@ -138,34 +131,34 @@ $(document).ready(function() {
 
                     //-----------------------plus-one icon-----------------------------------------
                     var code6 = response.list[6].weather[0].icon;
-                    console.log(code6);
+                    // console.log(code6);
                     var imgSrc6 = "https://openweathermap.org/img/wn/" + code6 + ".png";
-                    console.log(imgSrc6);
+                    // console.log(imgSrc6);
                     var iconImg6 = $("<img>").attr("src", imgSrc6);
 
                     //-----------------------plus-two icon-----------------------------------------
                     var code14 = response.list[14].weather[0].icon;
-                    console.log(code14);
+                    // console.log(code14);
                     var imgSrc14 = "https://openweathermap.org/img/wn/" + code14 + ".png";
-                    console.log(imgSrc14);
+                    // console.log(imgSrc14);
                     var iconImg14 = $("<img>").attr("src", imgSrc14);
                     //-----------------------plus-three icon-----------------------------------------
                     var code22 = response.list[22].weather[0].icon;
-                    console.log(code22);
+                    // console.log(code22);
                     var imgSrc22 = "https://openweathermap.org/img/wn/" + code22 + ".png";
-                    console.log(imgSrc22);
+                    // console.log(imgSrc22);
                     var iconImg22 = $("<img>").attr("src", imgSrc22);
                     //-----------------------plus-four icon-----------------------------------------
                     var code30 = response.list[30].weather[0].icon;
-                    console.log(code30);
+                    // console.log(code30);
                     var imgSrc30 = "https://openweathermap.org/img/wn/" + code30 + ".png";
-                    console.log(imgSrc30);
+                    // console.log(imgSrc30);
                     var iconImg30 = $("<img>").attr("src", imgSrc30);
                     //-----------------------plus-five icon-----------------------------------------
                     var code38 = response.list[38].weather[0].icon;
-                    console.log(code38);
+                    // console.log(code38);
                     var imgSrc38 = "https://openweathermap.org/img/wn/" + code38 + ".png";
-                    console.log(imgSrc38);
+                    // console.log(imgSrc38);
                     var iconImg38 = $("<img>").attr("src", imgSrc38);
                 
                     //------------------------------------------dynamically add content to html here------------------------------------------------------
