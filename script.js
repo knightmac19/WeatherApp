@@ -83,12 +83,12 @@ $(document).ready(function() {
           console.log(response);
           //
           $("#city-name").text(response.name + ", " + response.sys.country + " " + moment().format('l'));
-          $("#temp").text("Temperature: " + response.main.temp + " F");
+          $("#temp").text("Temperature: " + response.main.temp + " °F");
           $("#humidity").text("Humidity: " + response.main.humidity + "%");
-          $("#wind-speed").text("Wind-Speed: " + response.wind.speed + " mph");
+          $("#wind-speed").text("Wind-Speed: " + response.wind.speed + " MPH");
           
             var getUV = function() {
-                var queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?&apikey=4d721e459b51eed9d4d8047d079984e6" + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
+                var queryURL2 = "https://api.openweathermap.org/data/2.5/uvi?&apikey=4d721e459b51eed9d4d8047d079984e6" + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
                 $.ajax({
                     url:queryURL2,
                     method: "GET"
