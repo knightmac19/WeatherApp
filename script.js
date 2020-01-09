@@ -8,6 +8,7 @@ $(document).ready(function() {
         var code = event.which;
         if (code == 13) {
             event.preventDefault();
+            
             setData();
             getData();
             getWeather(city);
@@ -16,6 +17,7 @@ $(document).ready(function() {
     });
 
     $(".btn-search").on("click", function() {
+        
         setData();
         getData();
         getWeather(city);
@@ -78,9 +80,43 @@ $(document).ready(function() {
           $("#temp").text("Temperature: " + response.main.temp + " F");
           $("#humidity").text("Humidity: " + response.main.humidity + "%");
           $("#wind-speed").text("Wind-Speed: " + response.wind.speed + " mph");
-          $("#UV-index").text("UV Index: ");
+          
+            var getUV = function() {
+                var queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?appid=" + "4d721e459b51eed9d4d8047d079984e6" + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
+                $.ajax({
+                    url:queryURL2,
+                    method: "GET"
+                }).then(function(response) {
+                    console.log(response);
+                    var displayNum = parseFloat(response.value).toFixed(2);
+                    var indexNum = parseInt(response.value);
+                    console.log("uv index: " + response.value + 100);
+                    console.log(indexNum + 100);
+                    
+                    if (indexNum >= 0 && indexNum < 3) {
+                        $("#UV-index").text("UV Index: " + displayNum);
+                        $("#UV-index").css({"color": "white", "background-color": "green"});
+                    } else if (indexNum >= 3 && indexNum < 6) {
+                        $("#UV-index").text("UV Index: " + displayNum);
+                        $("#UV-index").css({"color": "white", "background-color": "yellow"});
+                    } else if (indexNum >= 6 && indexNum < 8) {
+                        $("#UV-index").text("UV Index: " + displayNum);
+                        $("#UV-index").css({"color": "white", "background-color": "orange"});
+                    } else if (indexNum >= 8 && indexNum < 10) {
+                        $("#UV-index").text("UV Index: " + displayNum);
+                        $("#UV-index").css({"color": "white", "background-color": "red"});
+                    } else {
+                        $("#UV-index").text("UV Index: " + displayNum);
+                        $("#UV-index").css({"color": "white", "background-color": "purple"});
+                    }
+                })
+            };
+            getUV();
         })
+        
+        
     };
+    
     
     
 });
