@@ -78,9 +78,20 @@ $(document).ready(function() {
             method:"GET"
         }).then(function(response) {
           console.log(response);
+          
+          var code = response.weather[0].icon;
+          console.log(code);
+          
+          var imgSrc = "https://openweathermap.org/img/wn/" + code + ".png";
+          console.log(imgSrc);
+          var iconImg = $("<img>").attr("src", imgSrc);
+          iconImg.attr("alt", response.weather[0].main);
+          
           $(".forecast").addClass("show");
           //
           $("#city-name").text(response.name + ", " + response.sys.country + " " + moment().format('l'));
+          
+          $("#icon").html(iconImg);
           $("#temp").text("Temperature: " + response.main.temp + " °F");
           $("#humidity").text("Humidity: " + response.main.humidity + "%");
           $("#wind-speed").text("Wind-Speed: " + response.wind.speed + " MPH");
@@ -103,7 +114,7 @@ $(document).ready(function() {
                         $("#UV-index").css({"color": "white", "background-color": "green"});
                     } else if (indexNum >= 3 && indexNum < 6) {
                         $("#UV-index").text("UV Index: " + displayNum);
-                        $("#UV-index").css({"color": "white", "background-color": "yellow"});
+                        $("#UV-index").css({"color": "white", "background-color": "rgb(131, 131, 55)"});
                     } else if (indexNum >= 6 && indexNum < 8) {
                         $("#UV-index").text("UV Index: " + displayNum);
                         $("#UV-index").css({"color": "white", "background-color": "orange"});
@@ -124,6 +135,39 @@ $(document).ready(function() {
                 }).then(function(response) {
                     console.log("5 day below:--------------------------------------");
                     console.log(response);
+
+                    //-----------------------plus-one icon-----------------------------------------
+                    var code6 = response.list[6].weather[0].icon;
+                    console.log(code6);
+                    var imgSrc6 = "https://openweathermap.org/img/wn/" + code6 + ".png";
+                    console.log(imgSrc6);
+                    var iconImg6 = $("<img>").attr("src", imgSrc6);
+
+                    //-----------------------plus-two icon-----------------------------------------
+                    var code14 = response.list[14].weather[0].icon;
+                    console.log(code14);
+                    var imgSrc14 = "https://openweathermap.org/img/wn/" + code14 + ".png";
+                    console.log(imgSrc14);
+                    var iconImg14 = $("<img>").attr("src", imgSrc14);
+                    //-----------------------plus-three icon-----------------------------------------
+                    var code22 = response.list[22].weather[0].icon;
+                    console.log(code22);
+                    var imgSrc22 = "https://openweathermap.org/img/wn/" + code22 + ".png";
+                    console.log(imgSrc22);
+                    var iconImg22 = $("<img>").attr("src", imgSrc22);
+                    //-----------------------plus-four icon-----------------------------------------
+                    var code30 = response.list[30].weather[0].icon;
+                    console.log(code30);
+                    var imgSrc30 = "https://openweathermap.org/img/wn/" + code30 + ".png";
+                    console.log(imgSrc30);
+                    var iconImg30 = $("<img>").attr("src", imgSrc30);
+                    //-----------------------plus-five icon-----------------------------------------
+                    var code38 = response.list[38].weather[0].icon;
+                    console.log(code38);
+                    var imgSrc38 = "https://openweathermap.org/img/wn/" + code38 + ".png";
+                    console.log(imgSrc38);
+                    var iconImg38 = $("<img>").attr("src", imgSrc38);
+                
                     //------------------------------------------dynamically add content to html here------------------------------------------------------
                     //set dates dynamically using moment().js 
                     $("#plus-one h5").text(moment().add(1, "days").format("l"));
@@ -133,27 +177,27 @@ $(document).ready(function() {
                     $("#plus-five h5").text(moment().add(5, "days").format("l"));
 
                     //#plus-one here-------------------------
-                    $("#plus-one .icon-5").text(response.list[6].weather[0].main);
+                    $("#plus-one .icon-5").html(iconImg6);
                     $("#plus-one .temp-5").text("Temp: " + response.list[6].main.temp + " °F");
                     $("#plus-one .humidity-5").text("Humidity: " + response.list[6].main.humidity + "%");
 
                     //#plus-two here-------------------------
-                    $("#plus-two .icon-5").text(response.list[14].weather[0].main);
+                    $("#plus-two .icon-5").html(iconImg14);
                     $("#plus-two .temp-5").text("Temp: " + response.list[14].main.temp + " °F");
                     $("#plus-two .humidity-5").text("Humidity: " + response.list[14].main.humidity + "%");
 
                     //#plus-three here-------------------------
-                    $("#plus-three .icon-5").text(response.list[22].weather[0].main);
+                    $("#plus-three .icon-5").html(iconImg22);
                     $("#plus-three .temp-5").text("Temp: " + response.list[22].main.temp + " °F");
                     $("#plus-three .humidity-5").text("Humidity: " + response.list[22].main.humidity + "%");
 
                     //#plus-four here-------------------------
-                    $("#plus-four .icon-5").text(response.list[30].weather[0].main);
+                    $("#plus-four .icon-5").html(iconImg30);
                     $("#plus-four .temp-5").text("Temp: " + response.list[30].main.temp + " °F");
                     $("#plus-four .humidity-5").text("Humidity: " + response.list[30].main.humidity + "%");
 
                     //#plus-five here-------------------------
-                    $("#plus-five .icon-5").text(response.list[38].weather[0].main);
+                    $("#plus-five .icon-5").html(iconImg38);
                     $("#plus-five .temp-5").text("Temp: " + response.list[38].main.temp + " °F");
                     $("#plus-five .humidity-5").text("Humidity: " + response.list[38].main.humidity + "%");
 

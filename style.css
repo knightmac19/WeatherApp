@@ -12,7 +12,9 @@ body {
     width:flex;
     padding:0px 0px 0px 0px;
     margin:0 auto;
+    
 }
+
 .container {
     margin-top:0px;
     margin-right:0px;
@@ -56,7 +58,7 @@ body {
 
 .five-day {
     border: 2px solid black;
-    height:10rem;
+    height:12rem;
     background-color:rgb(0, 132, 255);
     color:#fff;
     margin-bottom:10px;
@@ -67,7 +69,7 @@ body {
     margin-left:5px;
 }
 .main-forecast {
-    height:14rem;
+    height:16rem;
     
 }
 #UV-index {
