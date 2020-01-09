@@ -19,16 +19,16 @@
     
     <div class="container">
         <div class="row">
-            <!--Search Content Here-->
+            <!--Search Content Here style="width: 18rem;"-->
             <div class="col-md-3">
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <div class="container">
                         <label for="citySearch"><h3>Search for a city:</h3></label>
                         <div class="row">
                             <div class="col-md-9">
                                 <input id="city-search" type="text" class="form-control" class="search" >        
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <button class="search btn btn-primary btn-search"><i class="fa fa-search"></i></button>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                 </div>
             </div>
 
-            <div class="col-md-9">
+            <div class="col-md-9 forecast">
                 <div class="row">
                     <div class="col main-forecast">
                         <!--This is for the main forecast content-->
@@ -54,17 +54,41 @@
                 </div>
                 <hr>
 
-                <div class="row">
+                <div class="row forecast">
                     <div class="col"><h3>5-Day Forecast:</h3></div>
                 </div>
                 <div class="row">
-                    <div class="col five-day">Sunday
-                        
+                    <div id="plus-one" class="col five-day">
+                        <h5></h5>
+                        <p class="icon-5"></p>
+                        <p class="temp-5"></p>
+                        <p class="humidity-5"></p>
                     </div>
-                    <div class="col five-day">Monday</div>
-                    <div class="col five-day">Tuesday</div>
-                    <div class="col five-day">Wednesday</div>
-                    <div class="col five-day">Thursday</div>
+                    <div id="plus-two" class="col five-day">
+                        <h5></h5>
+                        <p class="icon-5"></p>
+                        <p class="temp-5"></p>
+                        <p class="humidity-5"></p>
+                    </div>
+                    <div id="plus-three" class="col five-day">
+                        <h5></h5>
+                        <p class="icon-5"></p>
+                        <p class="temp-5"></p>
+                        <p class="humidity-5"></p>
+                    </div>
+                    <div id="plus-four" class="col five-day">
+                        <h5></h5>
+                        <p class="icon-5"></p>
+                        <p class="temp-5"></p>
+                        <p class="humidity-5"></p>
+                    </div>
+                    <div id="plus-five" class="col five-day">
+                        <h5></h5>
+                        <p class="icon-5"></p>
+                        <p class="temp-5"></p>
+                        <p class="humidity-5"></p>
+                    </div>
+                    
                 </div>
             </div>
         </div>

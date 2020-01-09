@@ -21,6 +21,10 @@ body {
     width:100%;
 }
 
+.fa {
+    height:.5rem;
+}
+
 
 .card {
     margin-top:10px;
@@ -38,12 +42,24 @@ body {
       padding-bottom: 0;
     }
 }
+.forecast {
+    background-color:#fff;
+    margin-top:10px;
+    visibility:hidden;
+}
+.show {
+    visibility:visible;
+}
+.btn-dark {
+    background-color:rgb(0, 132, 255);
+}
 
 .five-day {
     border: 2px solid black;
-    height:14rem;
+    height:10rem;
     background-color:rgb(0, 132, 255);
     color:#fff;
+    margin-bottom:10px;
 }
 .col {
     margin-right:15px;
@@ -52,8 +68,12 @@ body {
 }
 .main-forecast {
     height:14rem;
-    border: 2px solid black;
+    
 }
 #UV-index {
     width:115px;
+}
+
+ul {
+    margin-bottom:10px;
 }
