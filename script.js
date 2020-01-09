@@ -3,6 +3,13 @@ $(document).ready(function() {
     var citiesArray = [];
     getData();
 
+    //Not working
+    $(".btn-dark").on("click", function() {
+        var searchTerm = this.val();
+        console.log(searchTerm);
+        getWeather(searchTerm);
+    });
+
 
     $("#city-search").keyup(function(event) {
         var code = event.which;
@@ -32,8 +39,6 @@ $(document).ready(function() {
         }
         console.log(citiesArray);
         console.log("city: " + city);
-
-        
     }
 
     function getData() {
@@ -51,14 +56,13 @@ $(document).ready(function() {
             darkBtn.attr("type", "button");
             //set button text()
             darkBtn.text(localStorage.getItem(citiesArray[i]));
-
-
             
             //add button functionality
-            var buttonVal = darkBtn.text();
-            darkBtn.on("click", function() {
-                getWeather(buttonVal);
-            });
+            //var buttonVal = darkBtn.text();
+            //darkBtn.on("click", function() {
+
+                //getWeather(buttonVal);
+            //});
 
             //set button as html of li
             li.html(darkBtn);
@@ -68,11 +72,13 @@ $(document).ready(function() {
         }
     }
 
+    
+
     var getWeather = function(place) {
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + place + "&units=imperial" + "&apikey=4d721e459b51eed9d4d8047d079984e6";
         $.ajax({
-          url:queryURL,
-          method:"GET"
+            url:queryURL,
+            method:"GET"
         }).then(function(response) {
           console.log(response);
           //
@@ -112,6 +118,18 @@ $(document).ready(function() {
                 })
             };
             getUV();
+
+            var fiveDay = function() {
+                var queryURL3 = "https://api.openweathermap.org/data/2.5/forecast?q="+ response.name + "," + response.sys.country + "&units=imperial" + "&apikey=4d721e459b51eed9d4d8047d079984e6";;
+                $.ajax({
+                    url:queryURL3,
+                    method: "GET"
+                }).then(function(response) {
+                    console.log("5 day below:--------------------------------------");
+                    console.log(response);
+                })
+            };
+            fiveDay();
         })
         
         
