@@ -1,15 +1,17 @@
 $(document).ready(function() {
+    //initializing variables, generating buttons from local storage
+    var city = "";
+    var citiesArray = JSON.parse(localStorage.getItem("citiesArray")) || [];
+    getData();
+    
+    //click listener for the buttons once they are created
     $(document).on("click" ,".btn-dark", function() {
         var searchTerm = $(this).text();
         console.log(searchTerm);
         getWeather(searchTerm);
     });
 
-
-    var city = "";
-    var citiesArray = JSON.parse(localStorage.getItem("citiesArray")) || [];
-    getData();
-    
+    //grabs user input and runs getWeather() with 'enter' key
     $("#city-search").keyup(function(event) {
         var code = event.which;
         if (code == 13) {
@@ -19,13 +21,15 @@ $(document).ready(function() {
             getWeather(city);
         }
     });
-
+    
+    //grabs user input and runs getWeather() upon search icon click
     $(".btn-search").on("click", function() {
         setData();
         getData();
         getWeather(city);
     });
 
+    //sets user data in an array in local storage
     function setData() {
         city = $("#city-search").val().trim();
         citiesArray.push(city);
@@ -33,6 +37,7 @@ $(document).ready(function() {
 
     }
 
+    //gets the array from user storage, creates a button, and prepends that button to a list
     function getData() {
         $(".list-group").empty();
         for (var i = 0; i < citiesArray.length; i++) {
@@ -49,12 +54,6 @@ $(document).ready(function() {
             darkBtn.attr("type", "button");
             darkBtn.css({"width": "100%", "text-align": "center", "font-size": "1.1rem"});
 
-            // darkBtn.on("click", function() {
-            //     var searchTerm = $(this).text();
-            //     console.log(searchTerm);
-            //     getWeather(searchTerm);
-            // });
-
             //set button text()
             darkBtn.text(citiesArray[i]);
 
@@ -66,9 +65,12 @@ $(document).ready(function() {
         }
     }
 
-    
-
+    //makes three API calls 
+        //1: first call provides content for the main-forecast area
+        //2: second call gets the UV index data
+        //3: third call gets data for the 5-day forecast content
     var getWeather = function(place) {
+        //main forecast content API call----------------------------------------
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + place + "&units=imperial" + "&apikey=4d721e459b51eed9d4d8047d079984e6";
         $.ajax({
             url:queryURL,
@@ -82,14 +84,19 @@ $(document).ready(function() {
           iconImg.attr("alt", response.weather[0].main);
           
           $(".forecast").addClass("show");
-          //
           $("#city-name").text(response.name + ", " + response.sys.country + " " + moment().format('l'));
           
           $("#icon").html(iconImg);
-          $("#temp").text("Temperature: " + response.main.temp + " °F");
-          $("#humidity").text("Humidity: " + response.main.humidity + "%");
-          $("#wind-speed").text("Wind-Speed: " + response.wind.speed + " MPH");
+          $("#temp").text(response.main.temp + " °F");
+          $("#temp").wrap("<strong></strong>");
+          $("#humidity").text(response.main.humidity + "%");
+          $("#humidity").wrap("<strong></strong>");
+          $("#wind-speed").text(response.wind.speed + " MPH");
+          $("#wind-speed").wrap("<strong></strong>");
+
+          //$( ".inner" ).wrap( "<div class='new'></div>" );
           
+            //UV index API call----------------------------------------
             var getUV = function() {
                 var queryURL2 = "https://api.openweathermap.org/data/2.5/uvi?&apikey=4d721e459b51eed9d4d8047d079984e6" + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
                 $.ajax({
@@ -101,25 +108,25 @@ $(document).ready(function() {
                     var displayNum = parseFloat(response.value).toFixed(2);
                     var indexNum = parseInt(response.value);
                     
-                    
                     if (indexNum >= 0 && indexNum < 3) {
-                        $("#UV-index").text("UV Index: " + displayNum);
+                        $("#UV-index").text(displayNum);
                         $("#UV-index").css({"color": "white", "background-color": "green"});
                     } else if (indexNum >= 3 && indexNum < 6) {
-                        $("#UV-index").text("UV Index: " + displayNum);
+                        $("#UV-index").text(displayNum);
                         $("#UV-index").css({"color": "white", "background-color": "rgb(131, 131, 55)"});
                     } else if (indexNum >= 6 && indexNum < 8) {
-                        $("#UV-index").text("UV Index: " + displayNum);
+                        $("#UV-index").text(displayNum);
                         $("#UV-index").css({"color": "white", "background-color": "orange"});
                     } else if (indexNum >= 8 && indexNum < 10) {
-                        $("#UV-index").text("UV Index: " + displayNum);
+                        $("#UV-index").text(displayNum);
                         $("#UV-index").css({"color": "white", "background-color": "red"});
                     } else {
-                        $("#UV-index").text("UV Index: " + displayNum);
+                        $("#UV-index").text(displayNum);
                         $("#UV-index").css({"color": "white", "background-color": "purple"});
                     }
-                })
+                });
             };
+            //five-day forecast API call----------------------------------------
             var fiveDay = function() {
                 var queryURL3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + response.name + "," + response.sys.country + "&units=imperial" + "&apikey=4d721e459b51eed9d4d8047d079984e6";
                 $.ajax({
@@ -199,12 +206,6 @@ $(document).ready(function() {
             
             getUV();
             fiveDay();
-            
-        })
-        
-        
+        });
     };
-    
-    
-    
 });

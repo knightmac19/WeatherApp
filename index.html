@@ -7,6 +7,7 @@
     <title>Weather App</title>
     <!--Bootstrap CSS--------------------------------->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--Fontawesome--------------------------------->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!--My CSS-->
     <link rel="stylesheet" href="style.css">
@@ -19,7 +20,7 @@
     
     <div class="container">
         <div class="row">
-            <!--Search Content Here style="width: 18rem;"-->
+            <!--Search Content Here-->
             <div class="col-md-3">
                 <div class="card">
                     <div class="container">
@@ -42,19 +43,19 @@
             </div>
 
             <div class="col-md-9 forecast">
+                <!--This row is for the main forecast content-->
                 <div class="row">
                     <div class="col main-forecast">
-                        <!--This is for the main forecast content-->
                         <h3 id="city-name"></h3>
-                        <p id="icon"></p>
-                        <p id="temp"></p>
-                        <p id="humidity"></p>
-                        <p id="wind-speed"></p>
-                        <p id="UV-index"></p>
+                        <h6 id="icon"></h6>
+                        <p>Temperature: <span id="temp"></span></p>
+                        <p>Humidity: <span id="humidity"></span></p>
+                        <p>Wind Speed: <span id="wind-speed"></span></p>
+                        <p>UV Index: <span id="UV-index" class="badge badge-pill"></span></p>
                     </div>
                 </div>
                 <hr>
-
+                <!--This row is for the 5-day forecast content-->
                 <div class="row forecast">
                     <div class="col"><h3>5-Day Forecast:</h3></div>
                 </div>
