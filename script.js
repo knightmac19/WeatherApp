@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    //in style.css --> html content with .forecast is set to invisible
+    //@ line 89 it is set to visible
+
+
     //initializing variables, generating buttons from local storage
     var city = "";
     var citiesArray = JSON.parse(localStorage.getItem("citiesArray")) || [];
@@ -8,6 +12,7 @@ $(document).ready(function() {
     $(document).on("click" ,".btn-dark", function() {
         var searchTerm = $(this).text();
         console.log(searchTerm);
+        //passing each button's text into the main getWeather() function that runs all the API calls
         getWeather(searchTerm);
     });
 
@@ -83,6 +88,7 @@ $(document).ready(function() {
           var iconImg = $("<img>").attr("src", imgSrc);
           iconImg.attr("alt", response.weather[0].main);
           
+        //make .forecast content appear
           $(".forecast").addClass("show");
           $("#city-name").text(response.name + ", " + response.sys.country + " " + moment().format('l'));
           
@@ -93,8 +99,6 @@ $(document).ready(function() {
           $("#humidity").wrap("<strong></strong>");
           $("#wind-speed").text(response.wind.speed + " MPH");
           $("#wind-speed").wrap("<strong></strong>");
-
-          //$( ".inner" ).wrap( "<div class='new'></div>" );
           
             //UV index API call----------------------------------------
             var getUV = function() {
@@ -203,7 +207,7 @@ $(document).ready(function() {
 
                 })
             };
-            
+            //call UV index API & fiveDay API within the main getWeather() function so they all run at the same time
             getUV();
             fiveDay();
         });
