@@ -39,7 +39,6 @@ $(document).ready(function() {
         city = $("#city-search").val().trim();
         citiesArray.push(city);
         localStorage.setItem("citiesArray", JSON.stringify(citiesArray));
-
     }
 
     //gets the array from user storage, creates a button, and prepends that button to a list
@@ -142,34 +141,27 @@ $(document).ready(function() {
 
                     //-----------------------plus-one icon-----------------------------------------
                     var code6 = response.list[6].weather[0].icon;
-                    // console.log(code6);
                     var imgSrc6 = "https://openweathermap.org/img/wn/" + code6 + ".png";
-                    // console.log(imgSrc6);
                     var iconImg6 = $("<img>").attr("src", imgSrc6);
 
                     //-----------------------plus-two icon-----------------------------------------
                     var code14 = response.list[14].weather[0].icon;
-                    // console.log(code14);
                     var imgSrc14 = "https://openweathermap.org/img/wn/" + code14 + ".png";
-                    // console.log(imgSrc14);
                     var iconImg14 = $("<img>").attr("src", imgSrc14);
+
                     //-----------------------plus-three icon-----------------------------------------
                     var code22 = response.list[22].weather[0].icon;
-                    // console.log(code22);
                     var imgSrc22 = "https://openweathermap.org/img/wn/" + code22 + ".png";
-                    // console.log(imgSrc22);
                     var iconImg22 = $("<img>").attr("src", imgSrc22);
+
                     //-----------------------plus-four icon-----------------------------------------
                     var code30 = response.list[30].weather[0].icon;
-                    // console.log(code30);
                     var imgSrc30 = "https://openweathermap.org/img/wn/" + code30 + ".png";
-                    // console.log(imgSrc30);
                     var iconImg30 = $("<img>").attr("src", imgSrc30);
+
                     //-----------------------plus-five icon-----------------------------------------
                     var code38 = response.list[38].weather[0].icon;
-                    // console.log(code38);
                     var imgSrc38 = "https://openweathermap.org/img/wn/" + code38 + ".png";
-                    // console.log(imgSrc38);
                     var iconImg38 = $("<img>").attr("src", imgSrc38);
                 
                     //------------------------------------------dynamically add content to html here------------------------------------------------------
