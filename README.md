@@ -24,7 +24,7 @@ The application makes several API calls to https://openwweathermap.org for the v
 
 ![alt_text](https://github.com/knightmac19/WeatherApp/blob/master/WeatherDashboard3.png)
 
-![alt_text](https://github.com/knightmac19/WeatherApp/blob/master/WeatherDashboard4.png)
+![alt_text](https://github.com/knightmac19/WeatherApp/blob/master/WeatherDashboard5.png)
 
 ### Tutorials / Resources
 

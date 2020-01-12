@@ -9,7 +9,7 @@ $(document).ready(function() {
     getData();
     
     //click listener for the buttons once they are created
-    $(document).on("click" ,".btn-dark", function() {
+    $(document).on("click",".btn-dark", function() {
         var searchTerm = $(this).text();
         console.log(searchTerm);
         //passing each button's text into the main getWeather() function that runs all the API calls
